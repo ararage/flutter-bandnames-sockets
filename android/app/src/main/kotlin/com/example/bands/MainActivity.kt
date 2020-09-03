@@ -1,4 +1,4 @@
-package com.example.bands
+package com.cherrybit.bands
 
 import io.flutter.embedding.android.FlutterActivity
 
