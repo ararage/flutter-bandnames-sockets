@@ -156,22 +156,24 @@ class _HomePageState extends State<HomePage> {
 
   Widget _showGraph() {
     Map<String, double> dataMap = new Map();
-    dataMap.putIfAbsent("Flutter", () => 5);
     bands.forEach((element) {
       dataMap.putIfAbsent(element.name, () => element.votes.toDouble());
     });
-    return Container(
-        padding: EdgeInsets.only(top: 20),
-        width: double.infinity,
-        height: 200,
-        child: SingleChildScrollView(
-          child: Container(
-            padding: EdgeInsets.all(20),
-            child: PieChart(
-              dataMap: dataMap,
-              chartType: ChartType.ring,
+    if (bands.length > 0) {
+      return Container(
+          padding: EdgeInsets.only(top: 20),
+          width: double.infinity,
+          height: 400,
+          child: SingleChildScrollView(
+            child: Container(
+              padding: EdgeInsets.all(20),
+              child: PieChart(
+                dataMap: dataMap,
+                chartType: ChartType.ring,
+              ),
             ),
-          ),
-        ));
+          ));
+    }
+    return Container(padding: EdgeInsets.only(top: 20),child: Text('Sin datos'));
   }
 }
